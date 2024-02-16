@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="2">
+    <tr>
+        <th>ID</th>
+        <th>POLICY</th>
+        <th>COVERAGE</th>
+        <th>ACTION</th>
+    </tr>
+    <tr th:each="l:${list}">
+        <td th:text="${l.id}"></td>
+        <td th:text="${l.pname}"></td>
+        <td>
+            <ul>
+                <li th:each="c:${l.coverages}" th:text="${c.cname}"></li>
+            </ul>
+        </td>
+        <td>
+            <a th:href="@{/updateby/{id}(id=${l.id})}">update</a>
+            <a th:href="@{/delete/{id}(id=${l.id})}">DELETE</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

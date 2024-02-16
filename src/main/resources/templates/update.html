@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/edit" th:object="${policy}" method="get">
+    id: <input type="number" name="id"  th:field="${policy.id}">
+    pname:<input type="text" name="pname" th:field="${policy.pname}">
+
+    <label>COVERAGE</label>
+    <div th:each="c:${coverage}" >
+        <input type="checkbox" th:id="${c.id}" th:name="'coverage'" th:value="${c.id}" th:checked="${policy.coverages.contains(c)}">
+        <label th:for="${c.id}" th:text="${c.cname}"></label>
+    </div>
+    <input type="submit" value="update">
+</form>
+</body>
+</html>
+
+
